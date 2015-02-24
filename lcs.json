@@ -1,0 +1,12 @@
+{
+ "revisions":[
+    {"revision":"apache/trunk"}
+ ],
+ "title":"LCS Perf Test",
+ "log":"stats.lcs.json",
+ "operations": [
+    {"type":"nodetool","command":"setcompactionthroughput 0", "nodes":"all"},
+    {"type":"stress","command":"write n=200000000 -pop seq=1..200M -schema compaction\\(strategy=LeveledCompactionStrategy\\) -rate threads=50"},
+    {"type":"stress","command":"mixed n=200000000 ratio\\(read=2, write=1\\) -pop seq=1..200M -schema compaction\\(strategy=LeveledCompactionStrategy\\) -rate threads=50"]
+}
+
